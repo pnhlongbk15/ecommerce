@@ -1,11 +1,11 @@
 import React from 'react'
 
-const BarProfile = () => {
+const Payment = () => {
   return (
     <div>
-      
+      Payment
     </div>
   )
 }
 
-export default BarProfile
+export default Payment

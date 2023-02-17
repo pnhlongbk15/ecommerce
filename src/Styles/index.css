@@ -36,6 +36,10 @@ body {
   border-bottom: 1rem solid transparent;
 }
 
+.close {
+  height: 0px;
+  overflow: hidden;
+}
 .scroll {
   height: 0px;
   overflow: hidden;
@@ -55,6 +59,7 @@ body {
 .stretch {
   /* height: 0px; */
   overflow: hidden;
+  height: 100px;
   animation: stretch 2s;
 }
 

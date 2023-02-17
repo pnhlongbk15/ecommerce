@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack'
 
 import { productsApi } from '~/API/productsApi'
 
-const ScreenProfile = () => {
+const Profile = () => {
    const { enqueueSnackbar } = useSnackbar()
 
    const [profile, setProfile] = useState({
@@ -218,4 +218,4 @@ const ScreenProfile = () => {
    )
 }
 
-export default ScreenProfile
+export default Profile

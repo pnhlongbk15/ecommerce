@@ -6,6 +6,6 @@ import LoginForm from '~/Components/Features/Form/Login/LoginForm'
 import RegisterForm from '~/Components/Features/Form/register/RegisterForm'
 import Cart from './Cart'
 import CheckOut from './CheckOut'
-import Profile from './Profile'
+import User from './User'
 
-export { Home, Contact, Products, ProductDetail, LoginForm, RegisterForm, Cart, CheckOut, Profile }
+export { Home, Contact, Products, ProductDetail, LoginForm, RegisterForm, Cart, CheckOut, User }

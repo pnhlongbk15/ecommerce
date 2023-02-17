@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Home, Contact, Products, ProductDetail, LoginForm, RegisterForm, Cart, CheckOut, Profile } from '~/Pages'
+import { Home, Contact, Products, ProductDetail, LoginForm, RegisterForm, Cart, CheckOut, User } from '~/Pages'
 
 const publicRoutes = [
   {
@@ -15,13 +15,13 @@ const publicRoutes = [
   { path: '/login', element: <LoginForm /> },
   { path: '/register', element: <RegisterForm /> },
   {
-    path: '/user/account/*',
+    path: '/user/*',
     // loader: ({ params }) => {
     //   console.log(params["*"])
     // },
     // action: ({ params }) => { },
-    element: <Profile />
-  }
+    element: <User />
+  },
 ]
 
 const Switch = () => {
