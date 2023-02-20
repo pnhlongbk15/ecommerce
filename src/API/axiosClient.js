@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 export const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: 'https://test-wheat-alpha-28.vercel.app/api/ecommerce',
     headers: {
         'Content-Type': 'application/json',
     }
