@@ -89,7 +89,7 @@ const Products = () => {
    //    })()
    // }, [page, filters, order])
 
-
+   
    return (
       <section className='my-20 md:my-28'>
          <div className='container px-4 md:px-8 mx-auto'>
@@ -134,7 +134,7 @@ const Products = () => {
                         ) : (
                            products.map((product) => (
                               <div
-                                 key={product.id}
+                                 key={product.productId}
                                  className="px-2 w-full sm:w-1/2 lg:w-1/3"
                               >
                                  <ProductThumbnail

@@ -13,7 +13,6 @@ const Profile = () => {
    const dispatch = useDispatch()
    const { enqueueSnackbar } = useSnackbar()
    const { avatar, message } = useSelector(state => state.auth)
-
    const [profile, setProfile] = useState({
       username: '',
       email: '',
