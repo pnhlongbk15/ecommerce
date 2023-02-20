@@ -26,16 +26,7 @@ export const productsApi = {
         const data = await axiosClient.post(url, info)
         return data.message
     },
-    async profile(userId) {
-        const url = '/user/account/profile'
-        const data = await axiosClient.post(url, userId)
-        return data.profile
-    },
-    async updateProfile(profile) {
-        const url = '/user/account/update'
-        const data = await axiosClient.post(url, profile)
-        return data.message
-    },
+    
     add(data) {
         const url = '/products';
         return axiosClient.post(url, data);

@@ -7,27 +7,27 @@ import Password from './Password'
 import Payment from './Payment'
 import Profile from './Profile'
 
-const router = [
-   {
-      path: '/profile',
-      element: <Profile />
-   },
-   {
-      path: '/payment',
-      element: <Payment />
-   },
-   {
-      path: '/address',
-      element: <Address />
-   },
-   {
-      path: '/password',
-      element: <Password />
-   }
-]
 
-const Account = () => {
-
+const Account = ({ openModal }) => {
+   
+   const router = [
+      {
+         path: '/profile',
+         element: <Profile />
+      },
+      {
+         path: '/payment',
+         element: <Payment />
+      },
+      {
+         path: '/address',
+         element: <Address openModal={openModal} />,
+      },
+      {
+         path: '/password',
+         element: <Password />
+      }
+   ]
 
    return (
       <div>

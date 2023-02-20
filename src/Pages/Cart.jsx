@@ -13,7 +13,6 @@ const Cart = () => {
    const navigate = useNavigate()
 
    const cartProducts = useSelector(state => state.cart);
-   console.log('cart', cartProducts)
 
    const increment = (product) => {
       dispatch(incrementByAUnit(product))

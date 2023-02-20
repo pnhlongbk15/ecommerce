@@ -1,76 +1,56 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Skeleton from 'react-loading-skeleton'
 
 const MenuUser = () => {
   const menu = useRef();
+  const { avatar } = useSelector(state => state.auth);
   const [prev, setPrev] = useState();
   const [header, setHeader] = useState();
 
-  useEffect(() => {
-    const subTag = [...menu.current.querySelectorAll('[data-tag=sub-tag]')]
-    if (subTag.length > 0) {
-      const handleEvent = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        // prev.current = e.target
-        setPrev(e.currentTarget)
-        prev?.classList.remove('text-blue-400')
-        e.currentTarget.classList.add('text-blue-400')
-      }
+  // useEffect(() => {
+  //   const subTag = [...menu.current.querySelectorAll('[data-tag=sub-tag]')]
+  //   if (subTag.length > 0) {
+  //     const handleEvent = (e) => {
+  //       // e.preventDefault() // để cái này thì Link nó k redirect được
+  //       e.stopPropagation()
+  //       // prev.current = e.target
+  //       setPrev(e.currentTarget)
+  //       prev?.classList.remove('text-blue-400')
+  //       e.currentTarget.classList.add('text-blue-400')
+  //     }
 
-      subTag.forEach(tag => {
-        tag.addEventListener('click', handleEvent)
-      })
-      return () => {
-        subTag.forEach(tag => {
-          tag.removeEventListener('click', handleEvent)
-        })
-      }
-    }
-  }, [prev])
+  //     subTag.forEach(tag => {
+  //       tag.addEventListener('click', handleEvent)
+  //     })
+  //     return () => {
+  //       subTag.forEach(tag => {
+  //         tag.removeEventListener('click', handleEvent)
+  //       })
+  //     }
+  //   }
+  // }, [prev])
   // đầu tiên khi click vào link nó sẽ thực hiện handleEvent sao đó nó sẽ vào return (return được chạy thẳng không bị điều kiện ảnh hưởng) sau đó con trỏ lên đầu useEffect chạy từ trên xuống như thường.
 
-  useEffect(() => {
-    const headerTag = [...menu.current.querySelectorAll('[data-tag=header-tag]')]
-    if (headerTag.length > 0) {
-      const handleEventList = (e) => {
-        e.preventDefault();
-        e.stopPropagation()
-        const target = e.currentTarget.parentElement.nextElementSibling;
-        target?.classList.toggle('scroll')
-        target?.classList.toggle('stretch')
-
-        if (target !== header) {
-          setHeader(target)
-          if (header?.classList.contains('stretch')) {
-            header?.classList.toggle('stretch')
-            header?.classList.toggle('scroll')
-          }
-        }
-      }
-
-      headerTag.forEach(tag => {
-        tag.addEventListener('click', handleEventList)
-      })
-      return () => {
-        headerTag.forEach(tag => {
-          tag.removeEventListener('click', handleEventList)
-        })
-      }
-    }
-  }, [header])
 
   return (
     <div className='w-full p-5' ref={menu}>
       <div className='flex flex-col justify-center'>
-        <div className='flex items-center gap-5'>
-          <img
-            src=''
-            alt=''
-            height={50}
-            width={50}
-          />
+        <div className='flex items-center gap-2 h-15 overflow-hidden'>
+          <div className='flex justify-center items-center h-[50px] w-[50px] rounded-full'>
+            {avatar ? (
+              <img
+                className='rounded-full bg-cover bg-center bg-no-repeat'
+                src={`data:image/png;base64,${avatar}`}
+                alt='avatar'
+              />
+            ) : (
+              <Skeleton className='w-full h-full rounded-full' />
+            )}
+          </div>
+
           <div>
             <p className='tracking-wider font-medium'>pnhlongbk15</p>
             <div className='flex gap-2 items-center text-gray-500 text-sm tracking-wide'>
@@ -88,11 +68,11 @@ const MenuUser = () => {
             </div>
             <div className='flex flex-col gap-2'>
               <div>
-                <Link to='/user/account/profile' className='hover:text-blue-400' data-tag='header-tag'>
+                <Link to='/user/account/profile' className='hover:text-blue-400'>
                   My Profile
                 </Link>
               </div>
-              <div className='flex flex-col text-sm stretch'>
+              <div className='flex flex-col text-sm '>
                 <Link to='/user/account/profile' data-tag='sub-tag'>
                   Profile
                 </Link>
@@ -115,11 +95,11 @@ const MenuUser = () => {
             </div>
             <div className='flex flex-col gap-2'>
               <div>
-                <Link to='/user/notifications/order' className='hover:text-blue-400' data-tag='header-tag'>
+                <Link to='/user/notifications/order' className='hover:text-blue-400' >
                   Notification
                 </Link>
               </div>
-              <div className='flex flex-col text-sm close'>
+              <div className='flex flex-col text-sm '>
                 <Link to='/user/notifications/order' data-tag='sub-tag'>
                   Update Order
                 </Link>
