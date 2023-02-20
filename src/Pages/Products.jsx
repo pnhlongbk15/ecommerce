@@ -71,25 +71,22 @@ const Products = () => {
       })()
    }, [page, order, filters])
 
-   // useEffect(() => {
-   //    (async () => {
-   //       try {
-   //          const data = await productsApi.getAll({
-   //             category: filters.categoryIds,
-   //             color: filters.colors,
-   //             size: filters.sizes
-   //          })
-   //          const totalProduct = data.length;
-   //          totalProduct
-   //             ? setTotalPage(Math.ceil(totalProduct / 9))
-   //             : setTotalPage(1);
-   //       } catch (e) {
-   //          alert(e.message)
-   //       }
-   //    })()
-   // }, [page, filters, order])
+   useEffect(() => {
+      (async () => {
+         try {
+            const totalProduct = products.length;
+            totalProduct
+               ? setTotalPage(Math.ceil(totalProduct / 9))
+               : setTotalPage(1)
 
-   
+         } catch (e) {
+            alert(e.message)
+         }
+
+      })()
+   }, [products.length])
+
+
    return (
       <section className='my-20 md:my-28'>
          <div className='container px-4 md:px-8 mx-auto'>
