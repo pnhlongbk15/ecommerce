@@ -4,10 +4,13 @@ import { authApi } from '~/API/authApi'
 
 export const signIn = createAsyncThunk('auth/signIn', async ({ email, password }) => {
    const data = await authApi.signIn(email, password);
-   const avatar = await authApi.avatar()
-   localStorage.setItem('avatar', avatar.image);
-   localStorage.setItem('accessToken', JSON.stringify(data.accessToken));
-   localStorage.setItem('username', data.username)
+   const avatar = await authApi.avatar();
+   if (data.status === 'success') {
+      localStorage.setItem('avatar', avatar.image);
+      localStorage.setItem('accessToken', JSON.stringify(data.accessToken));
+      localStorage.setItem('username', data.username);
+   }
+
    return data
 })
 
@@ -83,12 +86,14 @@ export const authSlice = createSlice({
          state.message = action.payload.message;
       },
       [signIn.fulfilled]: (state, action) => {
-         state.message = action.payload.message;
+         state.notify.status = action.payload.status;
+         state.notify.message = action.payload.message;
          state.username = action.payload.username;
          state.isLogin = true;
       },
       [signIn.rejected]: (state, action) => {
-         state.message = action.payload.message;
+         state.notify.status = action.payload.status;
+         state.notify.message = action.payload.message;
       },
       [setupAvatar.fulfilled]: (state, action) => {
          state.message = action.payload.message;
