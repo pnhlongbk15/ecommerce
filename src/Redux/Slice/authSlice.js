@@ -48,6 +48,8 @@ export const authSlice = createSlice({
       logout: (state) => {
          state.username = null;
          state.isLogin = false;
+         state.notify.status = 'success';
+         state.notify.message = 'Logout success.'
       },
       initial: (state) => {
          state.username = localStorage.getItem('username');
