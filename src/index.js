@@ -17,7 +17,7 @@ root.render(
         autoHideDuration={1000}
         anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'right',
         }}
     >
         <Router>
